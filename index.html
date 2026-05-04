@@ -8,8 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Swiper.js CSS CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Custom Styles - Using relative path -->
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
@@ -17,79 +17,93 @@
     <div class="swiper">
         <div class="swiper-wrapper">
             
-            <!-- Slide 1: Intro -->
+            <!-- Page 0: Intro (Index 0) - No Image per request -->
             <div class="swiper-slide bg-white">
-                <h1 class="text-4xl font-black text-gray-900 mb-4">Hướng dẫn Phòng họp</h1>
-                <p class="text-lg text-gray-600 mb-8">Vuốt để bắt đầu thiết lập.</p>
-                <div class="animate-bounce">
-                    <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
+                <div class="slide-content">
+                    <h1 class="text-4xl font-black text-gray-900 mb-4">Hướng dẫn Phòng họp</h1>
+                    <p class="text-xl text-gray-600 mb-8">Vuốt để bắt đầu thiết lập.</p>
+                    <div class="animate-bounce">
+                        <svg class="w-12 h-12 text-blue-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
                 </div>
             </div>
 
-            <!-- Slide 2: Branching Menu -->
+            <!-- Page 1 (Index 1) - Matches Image 1 -->
             <div class="swiper-slide bg-gray-50">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8">Bạn muốn kết nối bằng cách nào?</h2>
-                <div class="w-full max-w-xs space-y-4">
-                    <button onclick="goToBranch(2)" class="w-full py-4 px-6 text-xl font-bold text-white rounded-xl shadow-lg transition-transform active:scale-95 bg-blue-600">AirPlay</button>
-                    <button onclick="goToBranch(5)" class="w-full py-4 px-6 text-xl font-bold text-white rounded-xl shadow-lg transition-transform active:scale-95 bg-emerald-600">Trình duyệt</button>
-                    <button onclick="goToBranch(8)" class="w-full py-4 px-6 text-xl font-bold text-white rounded-xl shadow-lg transition-transform active:scale-95 bg-violet-600">Ứng dụng Di động</button>
+                <img src="./imgs/1.jpg" alt="Bước 1" class="slide-image">
+                <div class="slide-content">
+                    <p class="text-xl font-medium text-gray-800">Nếu thiết bị chưa bật vui lòng bật cầu giao rack và ổ cắm và chờ 5-10 phút</p>
                 </div>
             </div>
 
-            <!-- Branch A: AirPlay (Slides 3-5, Index 2-4) -->
-            <div class="swiper-slide bg-blue-50">
-                <span class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-2">AirPlay Bước 1</span>
-                <h2 class="text-3xl font-bold mb-4">Mở Trung tâm Điều khiển</h2>
-                <p class="text-gray-700">Vuốt xuống từ góc trên bên phải màn hình iPhone của bạn.</p>
-            </div>
-            <div class="swiper-slide bg-blue-50">
-                <span class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-2">AirPlay Bước 2</span>
-                <h2 class="text-3xl font-bold mb-4">Nhấn Phản chiếu màn hình</h2>
-                <p class="text-gray-700">Tìm biểu tượng có hai hình chữ nhật chồng lên nhau.</p>
-            </div>
-            <div class="swiper-slide bg-blue-50">
-                <span class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-2">AirPlay Bước 3</span>
-                <h2 class="text-3xl font-bold mb-4">Chọn "Phòng 101"</h2>
-                <p class="text-gray-700">Nhập mã 4 chữ số hiển thị trên TV nếu được yêu cầu.</p>
-                <button onclick="resetGuide()" class="mt-8 px-6 py-2 bg-blue-600 text-white rounded-full font-bold">Hoàn tất</button>
+            <!-- Page 2 (Index 2) - Matches Image 2 -->
+            <div class="swiper-slide bg-white">
+                <img src="./imgs/2.jpg" alt="Bước 2" class="slide-image">
+                <div class="slide-content">
+                    <p class="text-xl font-medium text-gray-800">Kết nối máy tính và điện thoại vào mạng của phòng họp</p>
+                </div>
             </div>
 
-            <!-- Branch B: Browser (Slides 6-8, Index 5-7) -->
-            <div class="swiper-slide bg-emerald-50">
-                <span class="text-emerald-600 font-bold uppercase tracking-widest text-sm mb-2">Trình duyệt Bước 1</span>
-                <h2 class="text-3xl font-bold mb-4">Truy cập URL</h2>
-                <p class="text-gray-700">Mở Safari hoặc Chrome và nhập: <br><strong>share.room.com</strong></p>
-            </div>
-            <div class="swiper-slide bg-emerald-50">
-                <span class="text-emerald-600 font-bold uppercase tracking-widest text-sm mb-2">Trình duyệt Bước 2</span>
-                <h2 class="text-3xl font-bold mb-4">Nhập ID cuộc họp</h2>
-                <p class="text-gray-700">Tìm ID cuộc họp gồm 6 chữ số ở góc dưới bên trái màn hình hiển thị.</p>
-            </div>
-            <div class="swiper-slide bg-emerald-50">
-                <span class="text-emerald-600 font-bold uppercase tracking-widest text-sm mb-2">Trình duyệt Bước 3</span>
-                <h2 class="text-3xl font-bold mb-4">Nhấn Chia sẻ</h2>
-                <p class="text-gray-700">Chọn "Toàn bộ màn hình" để có trải nghiệm tốt nhất.</p>
-                <button onclick="resetGuide()" class="mt-8 px-6 py-2 bg-emerald-600 text-white rounded-full font-bold">Hoàn tất</button>
+            <!-- Page 3: Multiple Choice Page (Index 3) - No Image per request -->
+            <div class="swiper-slide bg-gray-100">
+                <div class="slide-content">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-8">Bạn muốn thực hiện thao tác nào?</h2>
+                    <div class="space-y-4">
+                        <button onclick="goToBranch(4)" class="btn-choice bg-blue-600">Trình chiếu không dây 1</button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Branch C: Mobile App (Slides 9-11, Index 8-10) -->
-            <div class="swiper-slide bg-violet-50">
-                <span class="text-violet-600 font-bold uppercase tracking-widest text-sm mb-2">Ứng dụng Bước 1</span>
-                <h2 class="text-3xl font-bold mb-4">Tải ứng dụng</h2>
-                <p class="text-gray-700">Tìm kiếm "RoomShare" trên App Store hoặc Play Store.</p>
+            <!-- Page 4 (Index 4) - Matches Image 4 -->
+            <div class="swiper-slide bg-blue-50">
+                <img src="./imgs/4.jpg" alt="Bước 4" class="slide-image">
+                <div class="slide-content">
+                    <p class="text-xl font-medium text-gray-800">Chọn phòng họp lớn</p>
+                </div>
             </div>
-            <div class="swiper-slide bg-violet-50">
-                <span class="text-violet-600 font-bold uppercase tracking-widest text-sm mb-2">Ứng dụng Bước 2</span>
-                <h2 class="text-3xl font-bold mb-4">Bật Bluetooth</h2>
-                <p class="text-gray-700">Ứng dụng sử dụng Bluetooth để tìm các phòng lân cận một cách tự động.</p>
+
+            <!-- Page 5 (Index 5) - Matches Image 5 -->
+            <div class="swiper-slide bg-blue-50">
+                <img src="./imgs/5.jpg" alt="Bước 5" class="slide-image">
+                <div class="slide-content">
+                    <p class="text-xl font-medium text-gray-800">Chọn trình chiếu không dây 1 và ấn áp dụng</p>
+                </div>
             </div>
-            <div class="swiper-slide bg-violet-50">
-                <span class="text-violet-600 font-bold uppercase tracking-widest text-sm mb-2">Ứng dụng Bước 3</span>
-                <h2 class="text-3xl font-bold mb-4">Tham gia phòng</h2>
-                <p class="text-gray-700">Nhấn vào tên phòng xuất hiện trên màn hình của bạn.</p>
-                <button onclick="resetGuide()" class="mt-8 px-6 py-2 bg-violet-600 text-white rounded-full font-bold">Hoàn tất</button>
+
+            <!-- Page 6 (Index 6) - Matches Image 6 -->
+            <div class="swiper-slide bg-blue-50">
+                <img src="./imgs/6.png" alt="Bước 6" class="slide-image">
+                <div class="slide-content">
+                    <p class="text-lg font-medium text-gray-800 mb-4">Bật màn hình TV và làm theo hướng dẫn trên màn hình, truy cập vào địa chỉ <span class="font-bold text-blue-600">10.10.1.22</span></p>
+                    <p class="text-sm text-gray-500 italic">Người dùng có thể chọn trình chiếu qua browser hoặc qua app, thao tác của 2 cái này tương tự nhau</p>
+                </div>
+            </div>
+
+            <!-- Page 7 (Index 7) - Matches Image 7 -->
+            <div class="swiper-slide bg-blue-50">
+                <img src="./imgs/7.png" alt="Bước 7" class="slide-image">
+                <div class="slide-content">
+                    <p class="text-xl font-medium text-gray-800">Sau khi tải và cài đặt app VIA vui lòng chọn cuộc họp</p>
+                </div>
+            </div>
+
+            <!-- Page 8 (Index 8) - Matches Image 8 -->
+            <div class="swiper-slide bg-blue-50">
+                <img src="./imgs/8.jpg" alt="Bước 8" class="slide-image">
+                <div class="slide-content">
+                    <p class="text-xl font-medium text-gray-800">App VIA sẽ yêu cầu code bạn có thể tìm thấy code này ở góc chính giữa và góc trái của màn hình</p>
+                </div>
+            </div>
+
+            <!-- Page 9 (Index 9) - Matches Image 9 -->
+            <div class="swiper-slide bg-white">
+                <img src="./imgs/9.png" alt="Bước 9" class="slide-image">
+                <div class="slide-content">
+                    <p class="text-xl font-medium text-gray-800 mb-8">Sau khi nhập code bạn có thể ấn nút "Share" để bắt đầu chia sẻ màn hình</p>
+                    <button onclick="resetGuide()" class="btn-choice bg-green-600">Hoàn tất</button>
+                </div>
             </div>
 
         </div>
@@ -105,6 +119,7 @@
     </button>
 
     <!-- Swiper.js JS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
     <script>
@@ -123,7 +138,7 @@
 
         const homeButton = document.getElementById('home-button');
 
-        // Logic to show/hide Home Button based on slide index
+        // Toggle Home Button visibility based on active slide index
         swiper.on('slideChange', function () {
             if (swiper.activeIndex > 0) {
                 homeButton.style.display = 'block';
@@ -132,12 +147,12 @@
             }
         });
 
-        // Branching function
+        // Jump to a specific branch/slide
         function goToBranch(slideIndex) {
             swiper.slideTo(slideIndex);
         }
 
-        // Reset to first slide
+        // Return to the first slide
         function resetGuide() {
             swiper.slideTo(0);
         }
