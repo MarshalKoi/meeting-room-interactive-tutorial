@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Digital Guidebook</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Swiper.js CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Swiper Container -->
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            
+            <!-- Slide 1: Intro -->
+            <div class="swiper-slide bg-white">
+                <h1 class="text-4xl font-black text-gray-900 mb-4">Meeting Room Guide</h1>
+                <p class="text-lg text-gray-600 mb-8">Swipe to begin your setup.</p>
+                <div class="animate-bounce">
+                    <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Slide 2: Branching Menu -->
+            <div class="swiper-slide bg-gray-50">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">How would you like to connect?</h2>
+                <div class="w-full max-w-xs space-y-4">
+                    <button onclick="goToBranch(2)" class="w-full py-4 px-6 text-xl font-bold text-white rounded-xl shadow-lg transition-transform active:scale-95 bg-blue-600">AirPlay</button>
+                    <button onclick="goToBranch(5)" class="w-full py-4 px-6 text-xl font-bold text-white rounded-xl shadow-lg transition-transform active:scale-95 bg-emerald-600">Browser</button>
+                    <button onclick="goToBranch(8)" class="w-full py-4 px-6 text-xl font-bold text-white rounded-xl shadow-lg transition-transform active:scale-95 bg-violet-600">Mobile App</button>
+                </div>
+            </div>
+
+            <!-- Branch A: AirPlay (Slides 3-5, Index 2-4) -->
+            <div class="swiper-slide bg-blue-50">
+                <span class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-2">AirPlay Step 1</span>
+                <h2 class="text-3xl font-bold mb-4">Open Control Center</h2>
+                <p class="text-gray-700">Swipe down from the top-right corner of your iPhone screen.</p>
+            </div>
+            <div class="swiper-slide bg-blue-50">
+                <span class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-2">AirPlay Step 2</span>
+                <h2 class="text-3xl font-bold mb-4">Tap Screen Mirroring</h2>
+                <p class="text-gray-700">Look for the icon with two overlapping rectangles.</p>
+            </div>
+            <div class="swiper-slide bg-blue-50">
+                <span class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-2">AirPlay Step 3</span>
+                <h2 class="text-3xl font-bold mb-4">Select "Room 101"</h2>
+                <p class="text-gray-700">Enter the 4-digit code shown on the TV if prompted.</p>
+                <button onclick="resetGuide()" class="mt-8 px-6 py-2 bg-blue-600 text-white rounded-full font-bold">Finish</button>
+            </div>
+
+            <!-- Branch B: Browser (Slides 6-8, Index 5-7) -->
+            <div class="swiper-slide bg-emerald-50">
+                <span class="text-emerald-600 font-bold uppercase tracking-widest text-sm mb-2">Browser Step 1</span>
+                <h2 class="text-3xl font-bold mb-4">Go to URL</h2>
+                <p class="text-gray-700">Open Safari or Chrome and type: <br><strong>share.room.com</strong></p>
+            </div>
+            <div class="swiper-slide bg-emerald-50">
+                <span class="text-emerald-600 font-bold uppercase tracking-widest text-sm mb-2">Browser Step 2</span>
+                <h2 class="text-3xl font-bold mb-4">Enter Meeting ID</h2>
+                <p class="text-gray-700">Find the 6-digit Meeting ID in the bottom left of the display.</p>
+            </div>
+            <div class="swiper-slide bg-emerald-50">
+                <span class="text-emerald-600 font-bold uppercase tracking-widest text-sm mb-2">Browser Step 3</span>
+                <h2 class="text-3xl font-bold mb-4">Click Share</h2>
+                <p class="text-gray-700">Choose "Entire Screen" for the best experience.</p>
+                <button onclick="resetGuide()" class="mt-8 px-6 py-2 bg-emerald-600 text-white rounded-full font-bold">Finish</button>
+            </div>
+
+            <!-- Branch C: Mobile App (Slides 9-11, Index 8-10) -->
+            <div class="swiper-slide bg-violet-50">
+                <span class="text-violet-600 font-bold uppercase tracking-widest text-sm mb-2">Mobile App Step 1</span>
+                <h2 class="text-3xl font-bold mb-4">Download the App</h2>
+                <p class="text-gray-700">Search for "RoomShare" in the App Store or Play Store.</p>
+            </div>
+            <div class="swiper-slide bg-violet-50">
+                <span class="text-violet-600 font-bold uppercase tracking-widest text-sm mb-2">Mobile App Step 2</span>
+                <h2 class="text-3xl font-bold mb-4">Enable Bluetooth</h2>
+                <p class="text-gray-700">The app uses Bluetooth to find nearby rooms automatically.</p>
+            </div>
+            <div class="swiper-slide bg-violet-50">
+                <span class="text-violet-600 font-bold uppercase tracking-widest text-sm mb-2">Mobile App Step 3</span>
+                <h2 class="text-3xl font-bold mb-4">Join Room</h2>
+                <p class="text-gray-700">Tap the room name that appears on your screen.</p>
+                <button onclick="resetGuide()" class="mt-8 px-6 py-2 bg-violet-600 text-white rounded-full font-bold">Finish</button>
+            </div>
+
+        </div>
+        <!-- Pagination Dots -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Floating Home Button -->
+    <button id="home-button" onclick="resetGuide()" class="bg-white p-3 rounded-full shadow-2xl border border-gray-200">
+        <svg class="w-8 h-8 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+        </svg>
+    </button>
+
+    <!-- Swiper.js JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper', {
+            direction: 'horizontal',
+            loop: false,
+            pagination: {
+                el: '.swiper-pagination',
+                dynamicBullets: true,
+            },
+            keyboard: {
+                enabled: true,
+            },
+        });
+
+        const homeButton = document.getElementById('home-button');
+
+        // Logic to show/hide Home Button based on slide index
+        swiper.on('slideChange', function () {
+            if (swiper.activeIndex > 0) {
+                homeButton.style.display = 'block';
+            } else {
+                homeButton.style.display = 'none';
+            }
+        });
+
+        // Branching function
+        function goToBranch(slideIndex) {
+            swiper.slideTo(slideIndex);
+        }
+
+        // Reset to first slide
+        function resetGuide() {
+            swiper.slideTo(0);
+        }
+    </script>
+</body>
+</html>
