@@ -3,20 +3,26 @@ import Layout from "../layouts/Layout.astro";
 const base = import.meta.env.BASE_URL;
 ---
 
-<Layout title="Chọn phòng họp">
+<Layout title="HDSD Phòng họp">
   <div class="home">
 
     <div class="home-inner">
       <div class="home-header">
-        <div class="home-eyebrow">Smart AV System</div>
-        <h1 class="home-title">Chọn phòng họp</h1>
+        <h1 class="home-title">HDSD Phòng họp</h1>
         <p class="home-sub">Chọn không gian để xem hướng dẫn sử dụng</p>
       </div>
 
       <div class="home-rooms">
         <a href={`${base}/big-meeting-room`} class="room-card">
           <div class="room-card__bar room-card__bar--green"></div>
-          <div class="room-card__icon room-card__icon--green">🏛️</div>
+          <div class="room-card__icon room-card__icon--green">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
           <div class="room-card__info">
             <div class="room-card__name">Phòng họp lớn</div>
             <div class="room-card__specs">LED 163" · Teams · BYOD</div>
@@ -26,7 +32,12 @@ const base = import.meta.env.BASE_URL;
 
         <a href={`${base}/small-meeting-room`} class="room-card">
           <div class="room-card__bar room-card__bar--teal"></div>
-          <div class="room-card__icon room-card__icon--teal">🖥️</div>
+          <div class="room-card__icon room-card__icon--teal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
           <div class="room-card__info">
             <div class="room-card__name">Phòng họp nhỏ</div>
             <div class="room-card__specs">TV 75" · Teams · BYOD</div>
@@ -50,7 +61,7 @@ const base = import.meta.env.BASE_URL;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 32px 20px;
+    padding: 24px 16px;
   }
 
   .home-inner {
@@ -60,7 +71,7 @@ const base = import.meta.env.BASE_URL;
 
   .home-header {
     text-align: center;
-    margin-bottom: 36px;
+    margin-bottom: clamp(20px, 6vw, 32px);
   }
 
   .home-eyebrow {
@@ -69,20 +80,20 @@ const base = import.meta.env.BASE_URL;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--text-muted);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .home-title {
-    font-size: 40px;
+    font-size: clamp(28px, 9vw, 40px);
     font-weight: 800;
     letter-spacing: -0.02em;
     color: var(--text);
     line-height: 1.1;
-    margin: 0 0 10px;
+    margin: 0 0 8px;
   }
 
   .home-sub {
-    font-size: 13px;
+    font-size: clamp(12px, 3.2vw, 13px);
     color: var(--text-sub);
     margin: 0;
   }
@@ -90,17 +101,17 @@ const base = import.meta.env.BASE_URL;
   .home-rooms {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
 
   .room-card {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 18px 20px;
+    border-radius: 18px;
+    padding: 14px 16px;
     text-decoration: none;
     color: inherit;
     box-shadow: 0 1px 4px rgba(0,0,0,0.06);
@@ -113,8 +124,8 @@ const base = import.meta.env.BASE_URL;
   }
 
   .room-card__bar {
-    width: 4px;
-    height: 40px;
+    width: 3px;
+    height: 36px;
     border-radius: 3px;
     flex-shrink: 0;
   }
@@ -122,10 +133,10 @@ const base = import.meta.env.BASE_URL;
   .room-card__bar--teal  { background: #0d9488; }
 
   .room-card__icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 13px;
-    font-size: 22px;
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -134,28 +145,30 @@ const base = import.meta.env.BASE_URL;
   .room-card__icon--green {
     background: #f0fdf4;
     border: 1px solid #bbf7d0;
+    color: #16a34a;
   }
   .room-card__icon--teal {
     background: #f0fdfa;
     border: 1px solid #99f6e4;
+    color: #0d9488;
   }
 
   .room-card__info { flex: 1; }
 
   .room-card__name {
-    font-size: 15px;
+    font-size: clamp(13px, 3.8vw, 15px);
     font-weight: 700;
     color: var(--text);
   }
 
   .room-card__specs {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-muted);
     margin-top: 3px;
   }
 
   .room-card__chevron {
-    font-size: 20px;
+    font-size: 18px;
     color: var(--grey-300);
     transition: color 0.2s, transform 0.2s;
   }
@@ -165,7 +178,7 @@ const base = import.meta.env.BASE_URL;
   }
 
   .home-footer {
-    margin-top: 36px;
+    margin-top: clamp(24px, 6vw, 36px);
     font-size: 11px;
     color: var(--text-muted);
     text-align: center;

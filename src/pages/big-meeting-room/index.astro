@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.svelte";
+import { Image } from "astro:assets";
+import roomImg from "../../assets/imgs/PHL.jpg";
 
 const base = import.meta.env.BASE_URL;
 
@@ -8,7 +10,7 @@ const cards = [
   {
     title: "Bắt đầu nhanh",
     desc: "Khởi động hệ thống phòng họp trong 30 giây",
-    icon: "🚀",
+    icon: "Zap",
     steps: [
       "Bật nguồn hệ thống AV",
       "Chọn nguồn trình chiếu trên touch panel",
@@ -16,9 +18,19 @@ const cards = [
     ],
   },
   {
+    title: "Trình chiếu có dây",
+    desc: "Kết nối laptop qua HDMI trực tiếp vào hệ thống",
+    icon: "Plug",
+    steps: [
+      "Cắm cáp HDMI vào cổng trên bàn họp",
+      "Cắm đầu còn lại vào laptop",
+      "Chọn nguồn HDMI trên touch panel",
+    ],
+  },
+  {
     title: "Trình chiếu không dây",
     desc: "Kết nối laptop qua ClickShare hoặc AirPlay",
-    icon: "📡",
+    icon: "Cast",
     steps: [
       "Cắm USB ClickShare vào laptop",
       "Chờ thiết bị tự nhận diện",
@@ -28,7 +40,7 @@ const cards = [
   {
     title: "Họp Teams / Zoom",
     desc: "Sử dụng camera, micro và loa phòng họp",
-    icon: "🎥",
+    icon: "Video",
     steps: [
       "Mở Teams hoặc Zoom trên máy tính",
       "Chọn camera PTZ của phòng họp",
@@ -38,7 +50,7 @@ const cards = [
   {
     title: "Điều khiển âm thanh",
     desc: "Tăng giảm âm lượng và bật tắt micro",
-    icon: "🎤",
+    icon: "Mic",
     steps: [
       "Điều chỉnh master volume",
       "Mute/unmute micro đại biểu",
@@ -48,7 +60,7 @@ const cards = [
   {
     title: "Camera & Preset",
     desc: "Điều khiển camera PTZ và preset vị trí",
-    icon: "📷",
+    icon: "Camera",
     steps: [
       "Chọn camera cần điều khiển",
       "Gọi preset Chủ tọa / Toàn cảnh",
@@ -58,7 +70,7 @@ const cards = [
   {
     title: "Gọi hỗ trợ kỹ thuật",
     desc: "Liên hệ bộ phận AV/IT khi cần hỗ trợ",
-    icon: "🛠️",
+    icon: "Phone",
     steps: [
       "Hotline nội bộ: 1900 1234",
       "Quét QR để gửi ticket hỗ trợ",
@@ -81,11 +93,18 @@ const cards = [
             <div class="label-sm">Smart AV Room</div>
             <h1 class="room-title">PHÒNG HỌP LỚN</h1>
           </div>
-          <div class="room-badge">🏛️</div>
+          <div class="room-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
         </div>
         <div class="room-image-wrap">
-          <img
-            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200&auto=format&fit=crop"
+          <Image
+            src={roomImg}
             alt="Phòng họp lớn"
             class="room-image"
           />

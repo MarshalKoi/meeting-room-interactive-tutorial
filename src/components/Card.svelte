@@ -1,19 +1,29 @@
 <script>
+  import { activeCard } from '../stores/activeCard.js';
+  import { Zap, Wifi, Video, Mic, Camera, Phone, Plug, Volume2, Wrench, Cast } from 'lucide-svelte';
+
+  const iconMap = { Zap, Wifi, Video, Mic, Camera, Phone, Plug, Volume2, Wrench, Cast };
+
   let { title, desc, icon, steps, pdfUrl } = $props();
-  let open = $state(false);
+
+  const IconComponent = iconMap[icon];
+
+  function toggle() {
+    activeCard.update(current => current === title ? null : title);
+  }
 </script>
 
 <div
   role="button"
   tabindex="0"
-  onclick={() => (open = !open)}
-  onkeydown={(e) => (e.key === "Enter" || e.key === " ") && (open = !open)}
+  onclick={toggle}
+  onkeydown={(e) => (e.key === "Enter" || e.key === " ") && toggle()}
   class="card"
-  class:card--open={open}
+  class:card--open={$activeCard === title}
 >
   <div class="card__header">
     <div class="card__icon">
-      {icon}
+      <IconComponent size={20} strokeWidth={1.75} />
     </div>
     <div class="card__meta">
       <div class="card__top-row">
@@ -21,14 +31,14 @@
           <h2 class="card__title">{title}</h2>
           <p class="card__desc">{desc}</p>
         </div>
-        <div class="card__toggle" class:card__toggle--open={open}>
-          {open ? '−' : '+'}
+        <div class="card__toggle" class:card__toggle--open={$activeCard === title}>
+          {$activeCard === title ? '−' : '+'}
         </div>
       </div>
     </div>
   </div>
 
-  {#if open}
+  {#if $activeCard === title}
     <div class="card__body">
       <div class="card__divider"></div>
       <div class="card__steps">
@@ -61,8 +71,8 @@
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 18px 20px;
+    border-radius: 16px;
+    padding: 14px 16px;
     cursor: pointer;
     box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.18s;
@@ -79,19 +89,19 @@
   .card__header {
     display: flex;
     align-items: flex-start;
-    gap: 14px;
+    gap: 12px;
   }
 
   .card__icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 13px;
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
     background: var(--accent-bg);
     border: 1px solid var(--accent-border);
+    color: var(--accent);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
     flex-shrink: 0;
   }
 
@@ -105,7 +115,7 @@
   }
 
   .card__title {
-    font-size: 15px;
+    font-size: clamp(13px, 3.6vw, 15px);
     font-weight: 700;
     color: var(--text);
     margin: 0;
@@ -113,9 +123,9 @@
   }
 
   .card__desc {
-    font-size: 13px;
+    font-size: clamp(11px, 3vw, 13px);
     color: var(--text-sub);
-    margin: 5px 0 0;
+    margin: 4px 0 0;
     line-height: 1.5;
   }
 
@@ -176,7 +186,7 @@
   }
 
   .card__step-text {
-    font-size: 14px;
+    font-size: clamp(12px, 3.2vw, 14px);
     font-weight: 500;
     color: var(--text);
     line-height: 1.5;
@@ -184,8 +194,8 @@
 
   .card__actions {
     display: flex;
-    gap: 10px;
-    margin-top: 16px;
+    gap: 8px;
+    margin-top: 14px;
   }
 
   .card__btn-primary {
@@ -193,8 +203,8 @@
     background: var(--accent);
     color: #fff;
     border: none;
-    border-radius: 12px;
-    padding: 11px;
+    border-radius: 10px;
+    padding: 10px;
     font-size: 13px;
     font-weight: 700;
     cursor: pointer;
@@ -205,9 +215,9 @@
   .card__btn-primary:active { transform: scale(0.98); }
 
   .card__btn-secondary {
-    padding: 11px 16px;
+    padding: 10px 14px;
     border: 1px solid var(--border-strong);
-    border-radius: 12px;
+    border-radius: 10px;
     font-size: 13px;
     font-weight: 600;
     color: var(--text-sub);

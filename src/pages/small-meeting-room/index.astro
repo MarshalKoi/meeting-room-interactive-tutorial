@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.svelte";
+import { Image } from "astro:assets";
+import roomImg from "../../assets/imgs/PHN.jpg";
 
 const base = import.meta.env.BASE_URL;
 
@@ -8,7 +10,7 @@ const cards = [
   {
     title: "Bắt đầu nhanh",
     desc: "Khởi động TV và kết nối thiết bị trong 30 giây",
-    icon: "🚀",
+    icon: "Zap",
     steps: [
       "Bật TV bằng remote hoặc nút nguồn",
       "Bật bộ hub kết nối trên bàn",
@@ -18,7 +20,7 @@ const cards = [
   {
     title: "Trình chiếu có dây",
     desc: "Kết nối laptop qua HDMI trực tiếp",
-    icon: "🔌",
+    icon: "Plug",
     steps: [
       "Cắm cáp HDMI vào cổng trên bàn họp",
       "Cắm đầu còn lại vào laptop",
@@ -28,7 +30,7 @@ const cards = [
   {
     title: "Trình chiếu không dây",
     desc: "Kết nối laptop qua ClickShare",
-    icon: "📡",
+    icon: "Cast",
     steps: [
       "Cắm USB ClickShare vào laptop",
       "Chờ thiết bị tự nhận diện và kết nối",
@@ -38,7 +40,7 @@ const cards = [
   {
     title: "Họp Teams / Zoom",
     desc: "Dùng webcam USB và loa TV cho cuộc họp",
-    icon: "🎥",
+    icon: "Video",
     steps: [
       "Cắm webcam USB vào laptop",
       "Mở Teams hoặc Zoom và chọn webcam vừa cắm",
@@ -48,7 +50,7 @@ const cards = [
   {
     title: "Điều chỉnh âm thanh",
     desc: "Tăng giảm âm lượng loa TV hoặc loa ngoài",
-    icon: "🔊",
+    icon: "Volume2",
     steps: [
       "Dùng remote TV để điều chỉnh âm lượng",
       "Hoặc điều chỉnh volume trực tiếp trên laptop",
@@ -58,7 +60,7 @@ const cards = [
   {
     title: "Gọi hỗ trợ kỹ thuật",
     desc: "Liên hệ bộ phận AV/IT khi cần hỗ trợ",
-    icon: "🛠️",
+    icon: "Phone",
     steps: [
       "Hotline nội bộ: 1900 1234",
       "Quét QR để gửi ticket hỗ trợ",
@@ -81,11 +83,16 @@ const cards = [
             <div class="label-sm">Smart AV Room</div>
             <h1 class="room-title">PHÒNG HỌP NHỎ</h1>
           </div>
-          <div class="room-badge">🖥️</div>
+          <div class="room-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
         </div>
         <div class="room-image-wrap">
-          <img
-            src="https://images.unsplash.com/photo-1572021335469-31706a17aaef?q=80&w=1200&auto=format&fit=crop"
+          <Image
+            src={roomImg}
             alt="Phòng họp nhỏ"
             class="room-image"
           />
