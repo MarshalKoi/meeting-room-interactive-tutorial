@@ -4,52 +4,176 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Chọn phòng họp">
-  <div class="min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-md">
+  <div class="home">
 
-      <div class="text-center mb-8">
-        <div class="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Smart AV System</div>
-        <h1 class="text-3xl font-bold">Chọn phòng họp</h1>
+    <div class="home-inner">
+      <div class="home-header">
+        <div class="home-eyebrow">Smart AV System</div>
+        <h1 class="home-title">Chọn phòng họp</h1>
+        <p class="home-sub">Chọn không gian để xem hướng dẫn sử dụng</p>
       </div>
 
-      <div class="space-y-4">
-        <a
-          href={`${base}/big-meeting-room`}
-          class="block bg-white border border-slate-200 rounded-3xl p-6 shadow-md hover:bg-slate-50 transition-all duration-300"
-        >
-          <div class="flex items-center gap-4">
-            <div class="w-14 h-14 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-2xl shrink-0">
-              🏛️
-            </div>
-            <div>
-              <div class="text-lg font-semibold">Phòng họp lớn</div>
-              <div class="text-sm text-slate-500 mt-1">LED 163 inch • Teams • BYOD</div>
-            </div>
-            <div class="ml-auto text-slate-400 text-xl">›</div>
+      <div class="home-rooms">
+        <a href={`${base}/big-meeting-room`} class="room-card">
+          <div class="room-card__bar room-card__bar--green"></div>
+          <div class="room-card__icon room-card__icon--green">🏛️</div>
+          <div class="room-card__info">
+            <div class="room-card__name">Phòng họp lớn</div>
+            <div class="room-card__specs">LED 163" · Teams · BYOD</div>
           </div>
+          <div class="room-card__chevron">›</div>
         </a>
 
-        <a
-          href={`${base}/small-meeting-room`}
-          class="block bg-white border border-slate-200 rounded-3xl p-6 shadow-md hover:bg-slate-50 transition-all duration-300"
-        >
-          <div class="flex items-center gap-4">
-            <div class="w-14 h-14 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-2xl shrink-0">
-              🖥️
-            </div>
-            <div>
-              <div class="text-lg font-semibold">Phòng họp nhỏ</div>
-              <div class="text-sm text-slate-500 mt-1">TV • Teams • BYOD</div>
-            </div>
-            <div class="ml-auto text-slate-400 text-xl">›</div>
+        <a href={`${base}/small-meeting-room`} class="room-card">
+          <div class="room-card__bar room-card__bar--teal"></div>
+          <div class="room-card__icon room-card__icon--teal">🖥️</div>
+          <div class="room-card__info">
+            <div class="room-card__name">Phòng họp nhỏ</div>
+            <div class="room-card__specs">TV 75" · Teams · BYOD</div>
           </div>
+          <div class="room-card__chevron">›</div>
         </a>
       </div>
 
-      <div class="text-center text-slate-400 text-xs mt-8">
-        AV Control System • Support Hotline: 1900 1234
+      <div class="home-footer">
+        AV Control System · Hotline:
+        <a href="tel:19001234" class="home-footer__link">1900 1234</a>
       </div>
-
     </div>
+
   </div>
 </Layout>
+
+<style>
+  .home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px;
+  }
+
+  .home-inner {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .home-header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .home-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .home-title {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    line-height: 1.1;
+    margin: 0 0 10px;
+  }
+
+  .home-sub {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin: 0;
+  }
+
+  .home-rooms {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .room-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .room-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+
+  .room-card__bar {
+    width: 4px;
+    height: 40px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .room-card__bar--green { background: #16a34a; }
+  .room-card__bar--teal  { background: #0d9488; }
+
+  .room-card__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .room-card__icon--green {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+  }
+  .room-card__icon--teal {
+    background: #f0fdfa;
+    border: 1px solid #99f6e4;
+  }
+
+  .room-card__info { flex: 1; }
+
+  .room-card__name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .room-card__specs {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 3px;
+  }
+
+  .room-card__chevron {
+    font-size: 20px;
+    color: var(--grey-300);
+    transition: color 0.2s, transform 0.2s;
+  }
+  .room-card:hover .room-card__chevron {
+    color: var(--text-muted);
+    transform: translateX(3px);
+  }
+
+  .home-footer {
+    margin-top: 36px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .home-footer__link {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+</style>
