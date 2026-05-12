@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Layout.astro";
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title="Chọn phòng họp">
+  <div class="min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+
+      <div class="text-center mb-8">
+        <div class="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Smart AV System</div>
+        <h1 class="text-3xl font-bold">Chọn phòng họp</h1>
+      </div>
+
+      <div class="space-y-4">
+        <a
+          href={`${base}/big-room`}
+          class="block bg-white border border-slate-200 rounded-3xl p-6 shadow-md hover:bg-slate-50 transition-all duration-300"
+        >
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-2xl shrink-0">
+              🏛️
+            </div>
+            <div>
+              <div class="text-lg font-semibold">Phòng họp lớn</div>
+              <div class="text-sm text-slate-500 mt-1">LED 163 inch • Teams • BYOD</div>
+            </div>
+            <div class="ml-auto text-slate-400 text-xl">›</div>
+          </div>
+        </a>
+
+        <a
+          href={`${base}/small-room`}
+          class="block bg-white border border-slate-200 rounded-3xl p-6 shadow-md hover:bg-slate-50 transition-all duration-300"
+        >
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-2xl shrink-0">
+              🖥️
+            </div>
+            <div>
+              <div class="text-lg font-semibold">Phòng họp nhỏ</div>
+              <div class="text-sm text-slate-500 mt-1">TV • Teams • BYOD</div>
+            </div>
+            <div class="ml-auto text-slate-400 text-xl">›</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="text-center text-slate-400 text-xs mt-8">
+        AV Control System • Support Hotline: 1900 1234
+      </div>
+
+    </div>
+  </div>
+</Layout>
