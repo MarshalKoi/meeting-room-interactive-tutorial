@@ -3,81 +3,9 @@ import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.svelte";
 import { Image } from "astro:assets";
 import roomImg from "../../assets/imgs/PHL.jpg";
+import { bigRoomCards } from "../../data/big-room.js";
 
 const base = import.meta.env.BASE_URL;
-
-const cards = [
-  {
-    title: "Bắt đầu nhanh",
-    desc: "Khởi động hệ thống phòng họp trong 30 giây",
-    icon: "Zap",
-    steps: [
-      "Bật nguồn hệ thống AV",
-      "Chọn nguồn trình chiếu trên touch panel",
-      "Kiểm tra micro và camera",
-    ],
-  },
-  {
-    title: "Trình chiếu có dây",
-    desc: "Kết nối laptop qua HDMI trực tiếp vào hệ thống",
-    icon: "Plug",
-    steps: [
-      "Cắm cáp HDMI vào cổng trên bàn họp",
-      "Cắm đầu còn lại vào laptop",
-      "Chọn nguồn HDMI trên touch panel",
-    ],
-  },
-  {
-    title: "Trình chiếu không dây",
-    desc: "Kết nối laptop qua ClickShare hoặc AirPlay",
-    icon: "Cast",
-    steps: [
-      "Cắm USB ClickShare vào laptop",
-      "Chờ thiết bị tự nhận diện",
-      "Bấm nút để chia sẻ màn hình",
-    ],
-  },
-  {
-    title: "Họp Teams / Zoom",
-    desc: "Sử dụng camera, micro và loa phòng họp",
-    icon: "Video",
-    steps: [
-      "Mở Teams hoặc Zoom trên máy tính",
-      "Chọn camera PTZ của phòng họp",
-      "Chọn microphone và speaker AV Room",
-    ],
-  },
-  {
-    title: "Điều khiển âm thanh",
-    desc: "Tăng giảm âm lượng và bật tắt micro",
-    icon: "Mic",
-    steps: [
-      "Điều chỉnh master volume",
-      "Mute/unmute micro đại biểu",
-      "Kiểm tra mức tín hiệu trước khi họp",
-    ],
-  },
-  {
-    title: "Camera & Preset",
-    desc: "Điều khiển camera PTZ và preset vị trí",
-    icon: "Camera",
-    steps: [
-      "Chọn camera cần điều khiển",
-      "Gọi preset Chủ tọa / Toàn cảnh",
-      "Điều chỉnh zoom và tracking",
-    ],
-  },
-  {
-    title: "Gọi hỗ trợ kỹ thuật",
-    desc: "Liên hệ bộ phận AV/IT khi cần hỗ trợ",
-    icon: "Phone",
-    steps: [
-      "Hotline nội bộ: 1900 1234",
-      "Quét QR để gửi ticket hỗ trợ",
-      "Liên hệ kỹ thuật trực ca tầng 5",
-    ],
-  },
-];
 ---
 
 <Layout title="Phòng họp lớn">
@@ -107,40 +35,42 @@ const cards = [
             src={roomImg}
             alt="Phòng họp lớn"
             class="room-image"
+            loading="eager"
+            fetchpriority="high"
           />
           <div class="image-overlay"></div>
         </div>
         <div class="specs-row">
           <div class="spec-item">
-            <div class="spec-value">LED</div>
-            <div class="spec-label">163 inch</div>
+            <div class="spec-value">TV</div>
+            <div class="spec-label">86 inch</div>
           </div>
           <div class="spec-divider"></div>
           <div class="spec-item">
-            <div class="spec-value spec-value--accent">Teams</div>
+            <div class="spec-value spec-value--accent">Teams/Zoom</div>
             <div class="spec-label">Ready</div>
           </div>
           <div class="spec-divider"></div>
           <div class="spec-item">
             <div class="spec-value">BYOD</div>
-            <div class="spec-label">Wireless</div>
+            <div class="spec-label">Wired</div>
           </div>
         </div>
       </div>
 
       <div class="qs-panel">
-        <span class="qs-tag">Hướng dẫn nhanh</span>
-        <div class="qs-title">Trình chiếu trong 3 bước</div>
+        <span class="qs-tag">Khởi động hệ thống</span>
+        <div class="qs-title">Bắt đầu bằng việc khởi động hệ thống</div>
         <div class="qs-steps">
-          <div class="qs-step"><span class="qs-num">1</span>Cắm USB ClickShare vào laptop</div>
-          <div class="qs-step"><span class="qs-num">2</span>Chờ thiết bị kết nối tự động</div>
-          <div class="qs-step"><span class="qs-num">3</span>Bấm nút để bắt đầu trình chiếu</div>
+          <div class="qs-step"><span class="qs-num">1</span>Bật cầu giao trong tủ điện góc bên trái phòng</div>
+          <div class="qs-step"><span class="qs-num">2</span>Chờ thiết bị khởi động 5-10 phút</div>
+          <div class="qs-step"><span class="qs-num">3</span>Bật TV và máy tính</div>
         </div>
       </div>
 
       <div class="cards-stack">
-        {cards.map((card) => (
-          <Card client:visible {...card} />
+        {bigRoomCards.map((card) => (
+          <Card client:visible {...card} href={`${base}/big-meeting-room/${card.slug}`} />
         ))}
       </div>
 

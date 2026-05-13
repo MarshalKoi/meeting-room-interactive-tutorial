@@ -1,0 +1,49 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Icon from "../../components/Icon.svelte";
+import { smallRoomCards } from "../../data/small-room.js";
+
+const base = import.meta.env.BASE_URL;
+
+export function getStaticPaths() {
+  return smallRoomCards.map((card) => ({
+    params: { slug: card.slug },
+    props: { card },
+  }));
+}
+
+const { card } = Astro.props;
+---
+
+<Layout title={card.title}>
+  <div class="accent-teal pb-16">
+    <div class="page-inner">
+
+      <a href={`${base}/small-meeting-room`} class="back-link">‹ Phòng họp nhỏ</a>
+
+      <div class="detail-header">
+        <div class="detail-icon">
+          <Icon name={card.icon} size={22} />
+        </div>
+        <div>
+          <h1 class="detail-title">{card.title}</h1>
+          <p class="detail-desc">{card.desc}</p>
+        </div>
+      </div>
+
+      <div class="detail-steps">
+        {(card.detailSteps ?? card.steps).map((step, i) => (
+          <div class="detail-step">
+            <div class="detail-step__num">{i + 1}</div>
+            <div class="detail-step__text">{step}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="page-footer">
+        AV Control System · Hotline: <a href="tel:19001234" class="footer-link">1900 1234</a>
+      </div>
+
+    </div>
+  </div>
+</Layout>

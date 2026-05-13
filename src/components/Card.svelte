@@ -1,12 +1,8 @@
 <script>
   import { activeCard } from '../stores/activeCard.js';
-  import { Zap, Wifi, Video, Mic, Camera, Phone, Plug, Volume2, Wrench, Cast } from 'lucide-svelte';
+  import Icon from './Icon.svelte';
 
-  const iconMap = { Zap, Wifi, Video, Mic, Camera, Phone, Plug, Volume2, Wrench, Cast };
-
-  let { title, desc, icon, steps, pdfUrl } = $props();
-
-  const IconComponent = iconMap[icon];
+  let { title, desc, icon, steps, pdfUrl, href } = $props();
 
   function toggle() {
     activeCard.update(current => current === title ? null : title);
@@ -23,7 +19,7 @@
 >
   <div class="card__header">
     <div class="card__icon">
-      <IconComponent size={20} strokeWidth={1.75} />
+      <Icon name={icon} size={20} />
     </div>
     <div class="card__meta">
       <div class="card__top-row">
@@ -50,7 +46,7 @@
         {/each}
       </div>
       <div class="card__actions">
-        <button class="card__btn-primary">Xem hướng dẫn</button>
+        <a href={href} onclick={(e) => e.stopPropagation()} class="card__btn-primary">Xem hướng dẫn</a>
         {#if pdfUrl}
           <a
             href={pdfUrl}
@@ -209,6 +205,11 @@
     font-weight: 700;
     cursor: pointer;
     font-family: inherit;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: background 0.2s, transform 0.1s;
   }
   .card__btn-primary:hover { background: var(--accent-dark); }

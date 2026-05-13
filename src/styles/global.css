@@ -239,6 +239,79 @@ body {
   gap: 9px;
 }
 
+/* ─── Detail page ─────────────────────────────────────────── */
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 0 18px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.detail-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.detail-title {
+  font-size: clamp(18px, 5vw, 22px);
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 4px;
+  line-height: 1.2;
+}
+
+.detail-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.detail-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detail-step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.detail-step__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.detail-step__text {
+  font-size: clamp(14px, 3.8vw, 16px);
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.45;
+}
+
 /* Footer */
 .page-footer {
   margin-top: 28px;

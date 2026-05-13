@@ -3,71 +3,9 @@ import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.svelte";
 import { Image } from "astro:assets";
 import roomImg from "../../assets/imgs/PHN.jpg";
+import { smallRoomCards } from "../../data/small-room.js";
 
 const base = import.meta.env.BASE_URL;
-
-const cards = [
-  {
-    title: "Bắt đầu nhanh",
-    desc: "Khởi động TV và kết nối thiết bị trong 30 giây",
-    icon: "Zap",
-    steps: [
-      "Bật TV bằng remote hoặc nút nguồn",
-      "Bật bộ hub kết nối trên bàn",
-      "Chọn nguồn HDMI hoặc Wireless trên TV",
-    ],
-  },
-  {
-    title: "Trình chiếu có dây",
-    desc: "Kết nối laptop qua HDMI trực tiếp",
-    icon: "Plug",
-    steps: [
-      "Cắm cáp HDMI vào cổng trên bàn họp",
-      "Cắm đầu còn lại vào laptop",
-      "Chuyển nguồn TV sang HDMI tương ứng",
-    ],
-  },
-  {
-    title: "Trình chiếu không dây",
-    desc: "Kết nối laptop qua ClickShare",
-    icon: "Cast",
-    steps: [
-      "Cắm USB ClickShare vào laptop",
-      "Chờ thiết bị tự nhận diện và kết nối",
-      "Bấm nút ClickShare để chia sẻ màn hình",
-    ],
-  },
-  {
-    title: "Họp Teams / Zoom",
-    desc: "Dùng webcam USB và loa TV cho cuộc họp",
-    icon: "Video",
-    steps: [
-      "Cắm webcam USB vào laptop",
-      "Mở Teams hoặc Zoom và chọn webcam vừa cắm",
-      "Chọn loa TV hoặc loa bluetooth làm audio output",
-    ],
-  },
-  {
-    title: "Điều chỉnh âm thanh",
-    desc: "Tăng giảm âm lượng loa TV hoặc loa ngoài",
-    icon: "Volume2",
-    steps: [
-      "Dùng remote TV để điều chỉnh âm lượng",
-      "Hoặc điều chỉnh volume trực tiếp trên laptop",
-      "Tắt tiếng khi cần bằng nút Mute trên remote",
-    ],
-  },
-  {
-    title: "Gọi hỗ trợ kỹ thuật",
-    desc: "Liên hệ bộ phận AV/IT khi cần hỗ trợ",
-    icon: "Phone",
-    steps: [
-      "Hotline nội bộ: 1900 1234",
-      "Quét QR để gửi ticket hỗ trợ",
-      "Liên hệ kỹ thuật trực ca tầng 5",
-    ],
-  },
-];
 ---
 
 <Layout title="Phòng họp nhỏ">
@@ -95,40 +33,42 @@ const cards = [
             src={roomImg}
             alt="Phòng họp nhỏ"
             class="room-image"
+            loading="eager"
+            fetchpriority="high"
           />
           <div class="image-overlay"></div>
         </div>
         <div class="specs-row">
           <div class="spec-item">
             <div class="spec-value">TV</div>
-            <div class="spec-label">75 inch</div>
+            <div class="spec-label">65 inch</div>
           </div>
           <div class="spec-divider"></div>
           <div class="spec-item">
-            <div class="spec-value spec-value--accent">Teams</div>
+            <div class="spec-value spec-value--accent">Teams/Zoom</div>
             <div class="spec-label">Ready</div>
           </div>
           <div class="spec-divider"></div>
           <div class="spec-item">
             <div class="spec-value">BYOD</div>
-            <div class="spec-label">HDMI + Wireless</div>
+            <div class="spec-label">Wireless</div>
           </div>
         </div>
       </div>
 
       <div class="qs-panel">
-        <span class="qs-tag">Hướng dẫn nhanh</span>
-        <div class="qs-title">Kết nối trong 3 bước</div>
+        <span class="qs-tag">Khởi động hệ thống</span>
+        <div class="qs-title">Bắt đầu bằng việc khởi động hệ thống</div>
         <div class="qs-steps">
-          <div class="qs-step"><span class="qs-num">1</span>Bật TV và hub kết nối trên bàn</div>
-          <div class="qs-step"><span class="qs-num">2</span>Cắm HDMI hoặc USB ClickShare</div>
-          <div class="qs-step"><span class="qs-num">3</span>Chọn nguồn đầu vào trên remote TV</div>
+          <div class="qs-step"><span class="qs-num">1</span>Bật cầu giao trong tủ điện góc bên trái phòng</div>
+          <div class="qs-step"><span class="qs-num">2</span>Chờ thiết bị khởi động 5-10 phút</div>
+          <div class="qs-step"><span class="qs-num">3</span>Bật TV và máy tính</div>
         </div>
       </div>
 
       <div class="cards-stack">
-        {cards.map((card) => (
-          <Card client:visible {...card} />
+        {smallRoomCards.map((card) => (
+          <Card client:visible {...card} href={`${base}/small-meeting-room/${card.slug}`} />
         ))}
       </div>
 
