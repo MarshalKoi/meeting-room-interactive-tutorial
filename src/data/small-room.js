@@ -5,17 +5,15 @@ export const smallRoomCards = [
     desc: "Kết nối laptop qua HDMI",
     icon: "Cable",
     steps: [
-      "Cắm cáp HDMI vào cổng trên bàn họp",
-      "Cắm đầu còn lại vào laptop",
+      "Lấy cáp HDMI trên bàn họp",
+      "Cắm cáp HDMI vào laptop",
       "Chuyển nguồn TV sang HDMI tương ứng",
     ],
     detailSteps: [
       "Lấy cáp HDMI đặt sẵn trên bàn hoặc trong ngăn kéo bàn họp.",
-      "Cắm một đầu vào cổng HDMI trên bàn (có nhãn 'LAPTOP IN').",
-      "Cắm đầu còn lại vào cổng HDMI hoặc USB-C (dùng adapter) của laptop.",
+      "Cắm đầu cáp vào cổng HDMI hoặc USB-C (dùng adapter) của laptop.",
       "Nhấn nút 'Source' trên remote TV và chọn 'HDMI 1'.",
-      "Laptop Windows: nhấn Win+P → chọn 'Duplicate' hoặc 'Second screen only'.",
-      "Laptop Mac: vào System Settings → Displays → chọn chế độ hiển thị phù hợp.",
+      "Laptop sẽ tự động nhận nguồn HDMI.",
     ],
   },
   {
@@ -31,10 +29,9 @@ export const smallRoomCards = [
     detailSteps: [
       "Lấy ClickShare Button tại giá đỡ trên bàn.",
       "Cắm vào cổng USB-A hoặc USB-C của laptop (dùng adapter USB-C nếu cần).",
-      "Chờ đèn trên Button chuyển sang trắng — phần mềm sẽ tự cài, không cần thao tác thêm.",
+      "Chờ đèn trên Button chuyển sang trắng — phần mềm sẽ tự cài.",
       "Nhấn nút tròn để bắt đầu chia sẻ màn hình. Đèn xanh = đang chiếu.",
       "Nhấn lại nút tròn để dừng chia sẻ.",
-      "Trên TV, chuyển nguồn sang 'ClickShare' nếu chưa tự chuyển.",
     ],
   },
   {
@@ -45,15 +42,14 @@ export const smallRoomCards = [
     steps: [
       "Cắm webcam USB vào laptop",
       "Mở Teams hoặc Zoom và chọn webcam vừa cắm",
-      "Chọn loa TV hoặc loa bluetooth làm audio output",
+      "Chọn loa TV làm audio output",
     ],
     detailSteps: [
       "Cắm webcam USB vào cổng USB trên laptop hoặc hub bàn họp.",
       "Mở Microsoft Teams hoặc Zoom.",
       "Vào Settings → Devices/Video và chọn 'USB Webcam' từ danh sách camera.",
       "Microphone: chọn 'USB Webcam Mic' hoặc micro rời nếu có.",
-      "Speaker: chọn 'TV / HDMI Audio' để âm thanh phát qua loa TV, hoặc loa Bluetooth phòng.",
-      "Kiểm tra trước khi họp bằng 'Test Speaker' và 'Test Microphone' trong Settings.",
+      "Speaker: chọn 'TV / HDMI Audio' để âm thanh phát qua loa TV.",
     ],
   },
   {
@@ -63,14 +59,11 @@ export const smallRoomCards = [
     icon: "Volume2",
     steps: [
       "Dùng remote TV để điều chỉnh âm lượng",
-      "Hoặc điều chỉnh volume trực tiếp trên laptop",
       "Tắt tiếng khi cần bằng nút Mute trên remote",
     ],
     detailSteps: [
-      "Âm lượng loa TV: dùng nút Volume +/− trên remote TV. Mức khuyến nghị: 30–50%.",
-      "Âm lượng laptop: điều chỉnh thanh trượt volume trên taskbar (Windows) hoặc menu bar (Mac).",
-      "Tắt tiếng nhanh: nhấn nút Mute trên remote TV, hoặc phím tắt Fn+F1/F2 trên laptop.",
-      "Loa Bluetooth: bật loa, kết nối qua Settings → Bluetooth, chọn tên loa phòng họp.",
+      "Âm lượng loa TV: dùng nút Volume +/− trên remote TV.",
+      "Tắt tiếng nhanh: nhấn nút Mute trên remote TV.",
       "Nếu âm thanh từ cuộc họp online bị vọng: giảm volume TV xuống hoặc dùng tai nghe.",
     ],
   },
@@ -80,16 +73,11 @@ export const smallRoomCards = [
     desc: "Liên hệ bộ phận AV/IT khi cần hỗ trợ",
     icon: "Phone",
     steps: [
-      "Hotline nội bộ: 1900 1234",
-      "Quét QR để gửi ticket hỗ trợ",
-      "Liên hệ kỹ thuật trực ca tầng 5",
+      "Hotline nội bộ: 0853134368",
     ],
     detailSteps: [
-      "Hotline nội bộ: gọi số 1900 1234 (phục vụ giờ hành chính 8:00–17:30, thứ Hai–Sáu).",
-      "Ngoài giờ hành chính: nhắn tin qua Microsoft Teams đến nhóm 'AV Support'.",
-      "Ticket hỗ trợ: quét mã QR dán tại cửa phòng họp để tạo ticket nhanh qua ServiceDesk.",
-      "Kỹ thuật viên trực ca: có mặt tại phòng kỹ thuật tầng 5, phòng 502.",
-      "Khi gọi hỗ trợ, hãy cung cấp: tên phòng họp, mô tả sự cố, và số điện thoại liên lạc.",
+      "Hotline nội bộ: gọi số 0853134368 (phục vụ giờ hành chính 8:00–17:30, thứ Hai–Sáu).",
+      "Ngoài giờ hành chính: nhắn tin qua Zalo.",
     ],
   },
 ];

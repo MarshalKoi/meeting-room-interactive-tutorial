@@ -57,9 +57,10 @@ export const bigRoomCards = [
     detailSteps: [
       "Bật PC trong phòng họp bằng nút nguồn ở mặt dưới góc bên phải máy.",
       "Trên touch panel QSYS trên nắp tủ, chọn 'PHÒNG HỌP LỚN' -> 'HỌP TRỰC TUYẾN' -> 'CAMERA' -> 'ÁP DỤNG'.",
+      "Vào mục camera và call preset 0 của camera 1",
       "Trên touch panel TC10 trên mặt bàn họp, chọn 'Device Mode'.",
       "Rút ra và cắm lại dây usb màu trắng phía bên phải PC để máy nhận thiết bị âm thanh và camera của phòng họp.",
-      "Mở Microsoft Teams/Zoom/Google Meet trên laptop của bạn.",
+      "Mở Microsoft Teams/Zoom/Google Meet trên PC của bạn.",
       "Chọn camera, mic và loa của phòng họp tên là 'Poly Studio G62'",
     ],
   },
