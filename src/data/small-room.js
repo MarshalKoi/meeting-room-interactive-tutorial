@@ -3,7 +3,7 @@ export const smallRoomCards = [
     slug: "trinh-chieu-co-day",
     title: "Trình chiếu có dây",
     desc: "Kết nối laptop qua HDMI",
-    icon: "Plug",
+    icon: "Cable",
     steps: [
       "Cắm cáp HDMI vào cổng trên bàn họp",
       "Cắm đầu còn lại vào laptop",
