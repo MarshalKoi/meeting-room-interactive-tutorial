@@ -128,7 +128,7 @@ body {
 
 .room-image-wrap {
   position: relative;
-  margin: 0 14px;
+  margin: 0 14px 14px;
   border-radius: 10px;
   overflow: hidden;
 }
