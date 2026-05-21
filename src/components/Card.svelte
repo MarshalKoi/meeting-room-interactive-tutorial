@@ -2,20 +2,25 @@
   import { activeCard } from '../stores/activeCard.js';
   import Icon from './Icon.svelte';
 
-  let { title, desc, icon, steps, pdfUrl, href } = $props();
+  let { title, desc, icon, steps } = $props();
 
-  function toggle() {
-    activeCard.update(current => current === title ? null : title);
+  const isOpen = $derived($activeCard === title);
+
+  function open() {
+    activeCard.set(title);
+  }
+
+  function close() {
+    activeCard.set(null);
   }
 </script>
 
 <div
   role="button"
   tabindex="0"
-  onclick={toggle}
-  onkeydown={(e) => (e.key === "Enter" || e.key === " ") && toggle()}
+  onclick={open}
+  onkeydown={(e) => (e.key === "Enter" || e.key === " ") && open()}
   class="card"
-  class:card--open={$activeCard === title}
 >
   <div class="card__header">
     <div class="card__icon">
@@ -27,41 +32,49 @@
           <h2 class="card__title">{title}</h2>
           <p class="card__desc">{desc}</p>
         </div>
-        <div class="card__toggle" class:card__toggle--open={$activeCard === title}>
-          {$activeCard === title ? '−' : '+'}
-        </div>
+        <div class="card__arrow">›</div>
       </div>
     </div>
   </div>
+</div>
 
-  {#if $activeCard === title}
-    <div class="card__body">
-      <div class="card__divider"></div>
-      <div class="card__steps">
-        {#each steps as step, i}
-          <div class="card__step">
-            <div class="card__step-num">{i + 1}</div>
-            <div class="card__step-text">{step}</div>
-          </div>
-        {/each}
+{#if isOpen}
+  <div
+    class="modal-backdrop"
+    onclick={close}
+    role="presentation"
+  ></div>
+
+  <div
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-label={title}
+  >
+    <button class="modal__close" onclick={close} aria-label="Đóng">✕</button>
+
+    <div class="modal__header">
+      <div class="modal__icon">
+        <Icon name={icon} size={24} />
       </div>
-      <div class="card__actions">
-        <a href={href} onclick={(e) => e.stopPropagation()} class="card__btn-primary">Xem hướng dẫn</a>
-        {#if pdfUrl}
-          <a
-            href={pdfUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onclick={(e) => e.stopPropagation()}
-            class="card__btn-secondary"
-          >
-            PDF
-          </a>
-        {/if}
+      <div>
+        <h2 class="modal__title">{title}</h2>
+        <p class="modal__desc">{desc}</p>
       </div>
     </div>
-  {/if}
-</div>
+
+    <div class="modal__divider"></div>
+
+    <div class="modal__steps">
+      {#each steps as step, i}
+        <div class="modal__step">
+          <div class="modal__step-num">{i + 1}</div>
+          <div class="modal__step-text">{step}</div>
+        </div>
+      {/each}
+    </div>
+  </div>
+{/if}
 
 <style>
   .card {
@@ -75,12 +88,11 @@
     user-select: none;
     -webkit-user-select: none;
   }
-  .card:hover,
-  .card--open {
+  .card:hover {
     border-color: var(--border-strong);
     box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+    transform: translateY(-1px);
   }
-  .card:hover { transform: translateY(-1px); }
 
   .card__header {
     display: flex;
@@ -105,7 +117,7 @@
 
   .card__top-row {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: 10px;
   }
@@ -125,53 +137,139 @@
     line-height: 1.5;
   }
 
-  .card__toggle {
-    font-size: 20px;
-    font-weight: 400;
+  .card__arrow {
+    font-size: 22px;
+    font-weight: 300;
     color: var(--grey-300);
     flex-shrink: 0;
-    width: 22px;
-    text-align: center;
     line-height: 1;
-    margin-top: 1px;
-    transition: color 0.2s;
+    transition: color 0.2s, transform 0.2s;
   }
-  .card__toggle--open { color: var(--accent); }
-
-  .card__body {
-    animation: card-expand 0.2s ease-out both;
+  .card:hover .card__arrow {
+    color: var(--accent);
+    transform: translateX(2px);
   }
 
-  @keyframes card-expand {
-    from { opacity: 0; transform: translateY(-4px); }
+  /* ── Modal ── */
+
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 100;
+    animation: backdrop-in 0.2s ease-out both;
+  }
+
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 101;
+    overflow-y: auto;
+    padding: 56px 20px 40px;
+    animation: modal-in 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes backdrop-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes modal-in {
+    from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .card__divider {
-    height: 1px;
-    background: var(--border);
-    margin: 16px 0;
+  .modal__close {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--text-sub);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 102;
+    transition: background 0.15s, color 0.15s;
+  }
+  .modal__close:hover {
+    background: var(--grey-100);
+    color: var(--text);
   }
 
-  .card__steps {
+  .modal__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    max-width: 440px;
+    margin: 0 auto 0;
+  }
+
+  .modal__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-border);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .modal__title {
+    font-size: clamp(18px, 5vw, 22px);
+    font-weight: 800;
+    color: var(--text);
+    margin: 4px 0 0;
+    line-height: 1.2;
+  }
+
+  .modal__desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 6px 0 0;
+  }
+
+  .modal__divider {
+    height: 1px;
+    background: var(--border);
+    margin: 20px auto;
+    max-width: 440px;
+  }
+
+  .modal__steps {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    max-width: 440px;
+    margin: 0 auto;
   }
 
-  .card__step {
+  .modal__step {
     display: flex;
     align-items: flex-start;
-    gap: 11px;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
 
-  .card__step-num {
-    width: 22px;
-    height: 22px;
+  .modal__step-num {
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
-    background: var(--accent-bg);
-    border: 1px solid var(--accent-border);
-    color: var(--accent-dark);
+    background: var(--accent);
+    color: #fff;
     font-size: 11px;
     font-weight: 800;
     display: flex;
@@ -181,54 +279,10 @@
     margin-top: 1px;
   }
 
-  .card__step-text {
-    font-size: clamp(12px, 3.2vw, 14px);
+  .modal__step-text {
+    font-size: clamp(13px, 3.4vw, 15px);
     font-weight: 500;
     color: var(--text);
-    line-height: 1.5;
-  }
-
-  .card__actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 14px;
-  }
-
-  .card__btn-primary {
-    flex: 1;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: inherit;
-    text-decoration: none;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s, transform 0.1s;
-  }
-  .card__btn-primary:hover { background: var(--accent-dark); }
-  .card__btn-primary:active { transform: scale(0.98); }
-
-  .card__btn-secondary {
-    padding: 10px 14px;
-    border: 1px solid var(--border-strong);
-    border-radius: 10px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-sub);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .card__btn-secondary:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+    line-height: 1.55;
   }
 </style>

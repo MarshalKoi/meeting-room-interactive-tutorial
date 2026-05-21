@@ -5,11 +5,6 @@ export const bigRoomCards = [
     desc: "Kết nối laptop qua HDMI",
     icon: "Cable",
     steps: [
-      "Lấy cáp HDMI đặt trong tủ phía ngoài cùng bên trái",
-      "Cắm cáp HDMI vào cổng trên bàn họp",
-      "Chọn kịch bản 'TRÌNH CHIẾU' trên touch panel",
-    ],
-    detailSteps: [
       "Lấy cáp HDMI đặt trong tủ phía ngoài cùng bên trái.",
       "Cắm cáp HDMI vào cổng trong hộp âm bàn trên bàn họp.",
       "Trên touch panel, chọn 'PHÒNG HỌP LỚN' trên màn hình chính.",
@@ -23,12 +18,6 @@ export const bigRoomCards = [
     desc: "Kết nối laptop qua Via Go3 hoặc Poly G62",
     icon: "Cast",
     steps: [
-      "Chọn kịch bản 'T.CHIẾU KHÔNG DÂY' 1 hoặc 2 trên touch panel",
-      "Kết nối vào wifi phòng họp bằng QR hoặc tự nhập: AVI_Lab/Av@2025a",
-      "Làm theo hướng dẫn trên màn hình để lấy code hoặc đọc hướng dẫn kỹ hơn tại đây",
-      "Bấm nút để chia sẻ màn hình",
-    ],
-    detailSteps: [
       "Chọn kịch bản 'T.CHIẾU KHÔNG DÂY' 1 hoặc 2 trên touch panel.",
       "Kết nối vào wifi phòng họp bằng QR hoặc tự nhập: AVI_Lab/Av@2025a",
       "Không dây 1 dùng Via Go3, Không dây 2 dùng Poly G62.",
@@ -47,14 +36,6 @@ export const bigRoomCards = [
     desc: "Sử dụng camera, micro và loa phòng họp",
     icon: "Webcam",
     steps: [
-      "Bật PC trong phòng họp",
-      "Chọn kịch bản họp trực tuyến trên touch panel QSYS trên nắp tủ",
-      "Chọn device mode trên touch panel TC10 trên mặt bàn họp",
-      "Mở Teams/Zoom/Google Meet trên PC",
-      "Rút ra và cắm lại dây usb màu trắng phía bên phải PC",
-      "Chọn camera, mic và loa phòng họp",
-    ],
-    detailSteps: [
       "Bật PC trong phòng họp bằng nút nguồn ở mặt dưới góc bên phải máy.",
       "Trên touch panel QSYS trên nắp tủ, chọn 'PHÒNG HỌP LỚN' -> 'HỌP TRỰC TUYẾN' -> 'CAMERA' -> 'ÁP DỤNG'.",
       "Vào mục camera và call preset 0 của camera 1",
@@ -70,10 +51,6 @@ export const bigRoomCards = [
     desc: "Tăng giảm âm lượng",
     icon: "Volume2",
     steps: [
-      "Sau khi chọn và áp dụng kịch bản có thể điều chỉnh âm lượng tổng",
-      "Ấn icon biểu tượng âm thanh để Mute/unmute âm lượng",
-    ],
-    detailSteps: [
       "Master volume: điều chỉnh trên touch panel, khuyến nghị giữ nguyên",
       "Nhấn biểu tượng âm thanh trên touch panel để mute/unmute âm lượng tổng.",
       "Nếu âm thanh vọng hãy giảm volume",
@@ -85,11 +62,6 @@ export const bigRoomCards = [
     desc: "Điều khiển camera PTZ và preset vị trí",
     icon: "Camera",
     steps: [
-      "Chọn camera cần điều khiển",
-      "Gọi preset 0 để về vị trí toàn cảnh",
-      "Điều khiển thủ công bằng nút Pan/Tilt và Zoom",
-    ],
-    detailSteps: [
       "Trên touch panel, mở tab 'Camera' để xem danh sách camera PTZ trong phòng.",
       "Chọn camera muốn điều khiển.",
       "Điều khiển thủ công: dùng nút Pan/Tilt (lên/xuống/trái/phải) và Zoom +/− trên panel.",
@@ -102,9 +74,6 @@ export const bigRoomCards = [
     desc: "Liên hệ bộ phận AV/IT khi cần hỗ trợ",
     icon: "Phone",
     steps: [
-      "Hotline nội bộ: 0853134368",
-    ],
-    detailSteps: [
       "Hotline nội bộ: gọi số 0853134368 (phục vụ giờ hành chính 8:00–17:30, thứ Hai–Sáu).",
       "Ngoài giờ hành chính: nhắn tin qua Zalo.",
     ],

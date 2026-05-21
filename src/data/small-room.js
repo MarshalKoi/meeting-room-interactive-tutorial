@@ -5,12 +5,6 @@ export const smallRoomCards = [
     desc: "Kết nối laptop qua HDMI",
     icon: "Cable",
     steps: [
-      "Sang phòng họp lớn để lấy cáp HDMI",
-      "Cáp HDMI đặt trong tủ phía ngoài cùng bên trái",
-      "Chọn kịch bản 'TRÌNH CHIẾU' trên touch panel ở phòng họp lớn",
-      "Cắm cáp HDMI vào cổng trên bàn họp",
-    ],
-    detailSteps: [
       "Lấy cáp HDMI đặt trong tủ phía ngoài cùng bên trái trong phòng họp lớn.",
       "Trên touch panel, chọn 'PHÒNG HỌP NHỎ' trên màn hình chính.",
       "Chọn kịch bản 'TRÌNH CHIẾU' rồi ấn áp dụng.",
@@ -28,13 +22,6 @@ export const smallRoomCards = [
       "Góc trên màn hình có 6 ký tự là code để kết nối",
       "Kết nối vào wifi phòng họp bằng QR hoặc tự nhập: AVI_Lab/Av@2025a",
       "Truy cập web, https://connect.maxhub.com/, nhập 6 ký tự trên màn hình Maxhub",
-      "Đọc thêm hướng dẫn chi tiết tại đây để kết nối qua app MAXHUB nếu cần",
-    ],
-    detailSteps: [
-      "Bật màn hình MAXHUB",
-      "Góc trên màn hình có 6 ký tự là code để kết nối",
-      "Kết nối vào wifi phòng họp bằng QR hoặc tự nhập: AVI_Lab/Av@2025a",
-      "Truy cập web, https://connect.maxhub.com/, nhập 6 ký tự trên màn hình Maxhub",
       "Trên laptop tải app MAXHUB Connect còn trên iPhone tải Bytello Share",
       "App laptop hỗ trợ Screen Share, Desktop Sync (hiển thị nội dung màn MAXHUB lên máy tính) và File Share",
     ],
@@ -45,12 +32,6 @@ export const smallRoomCards = [
     desc: "Kết nối laptop qua Via Go3",
     icon: "Cast",
     steps: [
-      "Chọn kịch bản 'T.CHIẾU KHÔNG DÂY' trên touch panel",
-      "Kết nối vào wifi phòng họp bằng QR hoặc tự nhập: AVI_Lab/Av@2025a",
-      "Làm theo hướng dẫn trên màn hình để lấy code hoặc đọc hướng dẫn kỹ hơn tại đây",
-      "Bấm nút để chia sẻ màn hình",
-    ],
-    detailSteps: [
       "Chọn kịch bản 'PHÒNG HỌP NHỎ'->'T.CHIẾU KHÔNG DÂY' trên touch panel.",
       "Kết nối vào wifi phòng họp bằng QR hoặc tự nhập: AVI_Lab/Av@2025a",
       "Truy cập địa chỉ 10.10.1.22 và chọn kết nối bằng web hoặc tải app về và kết nối bằng app.",
@@ -66,15 +47,6 @@ export const smallRoomCards = [
       "Bật màn hình MAXHUB",
       "Góc trên màn hình có 6 ký tự là code để kết nối",
       "Kết nối vào wifi phòng họp bằng QR hoặc tự nhập: AVI_Lab/Av@2025a",
-      "Chuyển màn MAXHUB sang chế độ Android",
-      "Tải app MAXHUB Connect trên laptop và nhập code",
-      "Chọn tính năng Device Sync và mở camera và microphone",
-      "Mở Teams/Zoom/Google Meet trên laptop và chọn 'Sharing Camera', 'Sharing Microphone'",
-    ],
-    detailSteps: [
-      "Bật màn hình MAXHUB",
-      "Góc trên màn hình có 6 ký tự là code để kết nối",
-      "Kết nối vào wifi phòng họp bằng QR hoặc tự nhập: AVI_Lab/Av@2025a",
       "Phía bên phải hoặc trái màn hình có mũi tên nhỏ ấn vào để mở rộng sau đó chọn Menu và trong mục General chọn Android",
       "Tải app MAXHUB Connect trên laptop và nhập code",
       "Chọn tính năng Device Sync và mở camera và microphone",
@@ -87,10 +59,6 @@ export const smallRoomCards = [
     desc: "Tăng giảm âm lượng",
     icon: "Volume2",
     steps: [
-      "Sau khi chọn và áp dụng kịch bản có thể điều chỉnh âm lượng tổng",
-      "Ấn icon biểu tượng âm thanh để Mute/unmute âm lượng",
-    ],
-    detailSteps: [
       "Master volume: điều chỉnh trên touch panel, khuyến nghị giữ nguyên",
       "Nhấn biểu tượng âm thanh trên touch panel để mute/unmute âm lượng tổng.",
       "Nếu âm thanh vọng hãy giảm volume",
@@ -102,9 +70,6 @@ export const smallRoomCards = [
     desc: "Liên hệ bộ phận AV/IT khi cần hỗ trợ",
     icon: "Phone",
     steps: [
-      "Hotline nội bộ: 0853134368",
-    ],
-    detailSteps: [
       "Hotline nội bộ: gọi số 0853134368 (phục vụ giờ hành chính 8:00–17:30, thứ Hai–Sáu).",
       "Ngoài giờ hành chính: nhắn tin qua Zalo.",
     ],
