@@ -2,16 +2,18 @@
   import { activeCard } from '../stores/activeCard.js';
   import Icon from './Icon.svelte';
 
-  let { title, desc, icon, steps } = $props();
+  let { title, desc, icon, steps, href: _ } = $props();
 
   const isOpen = $derived($activeCard === title);
 
-  function open() {
-    activeCard.set(title);
-  }
+  function open() { activeCard.set(title); }
+  function close() { activeCard.set(null); }
 
-  function close() {
-    activeCard.set(null);
+  function parseHighlights(text) {
+    return text.split(/\*\*(.*?)\*\*/g).map((part, i) => ({
+      text: part,
+      highlight: i % 2 === 1,
+    }));
   }
 </script>
 
@@ -69,7 +71,11 @@
       {#each steps as step, i}
         <div class="modal__step">
           <div class="modal__step-num">{i + 1}</div>
-          <div class="modal__step-text">{step}</div>
+          <div class="modal__step-text">
+            {#each parseHighlights(step) as part}
+              {#if part.highlight}<mark class="hl">{part.text}</mark>{:else}{part.text}{/if}
+            {/each}
+          </div>
         </div>
       {/each}
     </div>
@@ -284,5 +290,16 @@
     font-weight: 500;
     color: var(--text);
     line-height: 1.55;
+  }
+
+  :global(.hl) {
+    background: none;
+    color: var(--accent);
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
   }
 </style>
